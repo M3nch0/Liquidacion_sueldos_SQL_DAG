@@ -1,0 +1,17 @@
+id_empleado;nombre;departamento;fecha_ingreso;salario_base;evaluacion;horas_extra
+1;  maria LOPEZ;ventas;15/3/2012;1600000;5;6
+2;JUAN perez ; VENTAS;1/7/2019;1200000;4;0
+3;Lucia Fernandez;Ventas;10/2/2023;1000000;;12
+4;diego SOSA;sistemas;31/10/2021;2000000;3;8
+5;CAMILA diaz;SISTEMAS ;2/11/2021;1800000;5;0
+6;martin Gomez;Sistemas;20/5/2016;2400000;4;10
+7;Sofia RODRIGUEZ;sistemas;1/8/2025;1400000;;4
+8;nicolas MARTINEZ; Sistemas;15/1/2024;1500000;2;0
+9;valentina LOPEZ;rrhh;3/9/2018;1300000;3;0
+10;JOAQUIN diaz;Rrhh;11/4/2022;1100000;4;2
+11;paula ACOSTA ;RRHH;1/6/2026;900000;;0
+12;Hernan Ruiz;logistica;30/11/2014;1250000;3;16
+13;romina PAZ; LOGISTICA;20/1/2020;1050000;1;14
+14;Tomas Herrera;Logistica ;5/12/2017;1150000;5;5
+15;Julieta VEGA;ventas ;1/10/2022;1350000;4;3
+16;Bruno CASTRO;VENTAS;28/2/2015;1450000;5;9

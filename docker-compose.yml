@@ -1,0 +1,58 @@
+services:
+  sleek-airflow:
+    image: apache/airflow:latest
+
+    environment:
+      # NUEVO: apache-airflow-providers-microsoft-mssql (hook y conexion de SQL Server)
+      - _PIP_ADDITIONAL_REQUIREMENTS=pandas apache-airflow-providers-github apache-airflow-providers-snowflake apache-airflow-providers-amazon apache-airflow-providers-postgres apache-airflow-providers-microsoft-mssql
+
+    volumes:
+      - ./airflow_meta:/opt/airflow
+      - ./dags:/opt/airflow/dags
+      - ./plugins:/opt/airflow/plugins
+      - ./carpeta1:/opt/airflow/carpeta1
+      - ./carpeta2:/opt/airflow/carpeta2
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - postgres
+      - sqlserver
+
+    command: airflow standalone
+
+  postgres:
+    image: postgres:16
+
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ejercicios
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # NUEVO: SQL Server en un contenedor (usuario sa)
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Airflow_2026!
+      - MSSQL_PID=Developer
+
+    # Puerto 14330 en tu PC (para no chocar con el SQL Server instalado en Windows).
+    # Dentro de Docker, Airflow lo ve en sqlserver:1433.
+    ports:
+      - "14330:1433"
+
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  postgres_data:
+  sqlserver_data:
